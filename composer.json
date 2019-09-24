@@ -1,8 +1,8 @@
 {
-  "name": "chrisidakwo/laravel-custom-auth",
+  "name": "chrisidakwo/laravel-auth-identifiers",
   "type": "library",
   "description": "Laravel custom authentication with an option to use a custom password validation implementation",
-  "keywords": ["admin", "custom", "authentication", "password", "custom", "validator", "laravel", "php"],
+  "keywords": ["admin", "custom", "auth", "identifiers", "authentication", "password", "validator", "laravel", "php"],
   "license": "GPL-3.0",
   "authors": [
     {
