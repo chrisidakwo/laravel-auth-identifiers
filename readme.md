@@ -8,39 +8,21 @@ Installation
 composer require chrisidakwo/laravel-auth-identifiers
 ```
 
-Setup
-------------
-**Step 1:**  You can either add the ``ChrisIdakwo\Auth\Providers\CustomAuthServiceProvider::class`` to the providers array in the``config/app.php`` file. Ensure it's below ``App\Providers\AuthServiceProvider::class`` to avoid Laravel's default authentication overriding the library's implementation.
-
-Or you can use the 
-``ChrisIdakwo\Auth\Providers\BootCustomAuthProvider`` trait in the ``App\Providers\AuthServiceProvider`` class like below:
+After installation, add the service provider to the providers array in the``config/app.php`` file. Ensure it's below ``App\Providers\AuthServiceProvider::class`` to avoid Laravel's default ```AuthServiceProvider``` overriding this library's implementation.
 
 ```php
-<?php
-namespace App\Providers;
-
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use ChrisIdakwo\Auth\Providers\BootCustomAuthProvider;
-
-class AuthServiceProvider extends ServiceProvider {
-    use BootCustomAuthProvider;
-
-    /**
-     * Register any authentication / authorization services.
-     *
-     * @return void
-     */
-    public function boot() {
-        $this->registerPolicies();
-
-        $this->bootCustomAuthProvider();
-    }
-}
+ChrisIdakwo\Auth\Providers\CustomAuthServiceProvider::class
 ```
 
-**Step 2:** Publish config file: ``php artisan vendor:publish ChrisIdakwo\Auth\Providers\CustomAuthServiceProvider --tag=config``
+**Laravel 5.5** uses package auto-discovery, so doesn't require you to manually add the ServiceProvider.
 
-**Step 3:** Update the ``User`` model to use the ``ChrisIdakwo\Auth\Traits\CustomAuthUser`` trait.
+#### Config
+Publish config file only when you need to use a custom password validator
+
+``php artisan vendor:publish ChrisIdakwo\Auth\Providers\CustomAuthServiceProvider --tag=config``
+
+#### User Model
+Update the ``User`` model to use the ``ChrisIdakwo\Auth\Traits\CustomAuthUser`` trait.
 
 ```php
 <?php
@@ -69,8 +51,8 @@ class User extends Authenticatable {
 
 With this you can authenticate a user against either of an email, username, phone number, or a pin code.
 
-
-**Step 4:** Update the providers driver for users in the ``config/auth.php`` file like below:
+#### Auth Driver
+ Update the providers driver for users in the ``config/auth.php`` file like below:
 ```php
 <?php
 
@@ -88,8 +70,6 @@ return [
     // ...
 ];
 ```
-
-
 
 Usage
 ------------

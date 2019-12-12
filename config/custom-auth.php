@@ -10,5 +10,5 @@ return [
 	 * If a closure, then the first parameter is an instance of an Authenticable and the second parameter
 	 * is the password from the login POST request
 	 */
-	"password_validator" => null,
+	'password_validator' => null,
 ];
