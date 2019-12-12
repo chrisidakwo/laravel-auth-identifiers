@@ -8,7 +8,7 @@ Installation
 composer require chrisidakwo/laravel-auth-identifiers
 ```
 
-Usage
+Setup
 ------------
 **Step 1:**  You can either add the ``ChrisIdakwo\Auth\Providers\CustomAuthServiceProvider::class`` to the providers array in the``config/app.php`` file. Ensure it's below ``App\Providers\AuthServiceProvider::class`` to avoid Laravel's default authentication overriding the library's implementation.
 
