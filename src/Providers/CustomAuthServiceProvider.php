@@ -2,7 +2,6 @@
 
 namespace ChrisIdakwo\Auth\Providers;
 
-use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\ServiceProvider;
 
 class CustomAuthServiceProvider extends ServiceProvider {
@@ -12,14 +11,13 @@ class CustomAuthServiceProvider extends ServiceProvider {
 	 * Boot the service provider
 	 *
 	 * @return void
-	 * @throws BindingResolutionException
 	 */
 	public function boot(): void {
-		$this->mergeConfigFrom(__DIR__ . "/../../config/custom-auth.php", "custom-auth");
+		$path = dirname(__DIR__, 2) . "/config/custom-auth.php";
 
-		$this->publishes([
-			__DIR__ . "/../../config/" => $this->app->make("path.config")
-		], "config");
+		$this->publishes([$path => config_path('custom-auth.php')], "config");
+
+		$this->mergeConfigFrom($path, "custom-auth");
 
 		$this->bootCustomAuthProvider();
 	}
