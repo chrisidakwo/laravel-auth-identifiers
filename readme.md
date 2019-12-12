@@ -1,14 +1,18 @@
 # Laravel Authentication Identifiers
-Provides the ability to use custom authentication identifiers such as: `email, password, phone_number or pin` and a password to authenticate users in your application. It also allows you to implement a custom password validator.
+Laravel Auth Identifier is a small library that allows you to use custom authentication identifiers such as: `email, password, phone_number or pin` and a password to authenticate users in your application. It also allows you to implement a custom password validator using a class or closure function.
 
 
-### Installation
-**Step 1:** Install the composer package:
-``composer require chrisidakwo/laravel-auth-identifiers``
+Installation
+------------
+```bash
+composer require chrisidakwo/laravel-auth-identifiers
+```
 
+Usage
+------------
+**Step 1:**  You can either add the ``ChrisIdakwo\Auth\Providers\CustomAuthServiceProvider::class`` to the providers array in the``config/app.php`` file. Ensure it's below ``App\Providers\AuthServiceProvider::class`` to avoid Laravel's default authentication overriding the library's implementation.
 
-
-**Step 2:** You can either add the ``ChrisIdakwo\Auth\Providers\CustomAuthServiceProvider::class`` to the providers array in the``config/app.php`` file - ensure it's below ``App\Providers\AuthServiceProvider::class``, to avoid Laravel's default authentication overriding the library's implementations or you can use the 
+Or you can use the 
 ``ChrisIdakwo\Auth\Providers\BootCustomAuthProvider`` trait in the ``App\Providers\AuthServiceProvider`` class like below:
 
 ```php
@@ -34,12 +38,9 @@ class AuthServiceProvider extends ServiceProvider {
 }
 ```
 
+**Step 2:** Publish config file: ``php artisan vendor:publish ChrisIdakwo\Auth\Providers\CustomAuthServiceProvider --tag=config``
 
-
-**Step 3:** Publish config file: ``php artisan vendor:publish ChrisIdakwo\Auth\Providers\CustomAuthServiceProvider --tag=config``
-
-
-**Step 4:** Update the ``User`` model to use the ``ChrisIdakwo\Auth\Traits\CustomAuthUser`` trait.
+**Step 3:** Update the ``User`` model to use the ``ChrisIdakwo\Auth\Traits\CustomAuthUser`` trait.
 
 ```php
 <?php
@@ -69,7 +70,7 @@ class User extends Authenticatable {
 With this you can authenticate a user against either of an email, username, phone number, or a pin code.
 
 
-**Step 5:** Update the providers driver for users in the ``config/auth.php`` file like below:
+**Step 4:** Update the providers driver for users in the ``config/auth.php`` file like below:
 ```php
 <?php
 
@@ -90,7 +91,8 @@ return [
 
 
 
-### How To Use
+Usage
+------------
 ```php
 <?php
 
@@ -103,9 +105,11 @@ if (Auth::attempt($data)) {
 }
 ```
 
-### TODO
+TODO
+------------
 - Write Test Cases
 
-### NOTE
+Note
+------------
 Still in active development. But can be used as is.
 

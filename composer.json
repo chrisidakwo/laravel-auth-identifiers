@@ -16,9 +16,7 @@
   },
   "extra": {
     "laravel": {
-      "providers": [
-        "ChrisIdakwo\\Auth\\Providers\\CustomAuthServiceProvider"
-      ]
+      "providers": []
     }
   },
   "autoload": {
