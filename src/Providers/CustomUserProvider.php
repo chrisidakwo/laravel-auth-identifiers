@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 use ChrisIdakwo\Auth\Auth;
 use ChrisIdakwo\Auth\Exceptions\CustomAuthException;
 use ChrisIdakwo\Auth\Interfaces\ICustomAuthValidate;
-use ChrisIdakwo\Auth\Traits\CustomAuthValidator;
 
 class CustomUserProvider extends EloquentUserProvider {
 	public function retrieveByCredentials(array $credentials) {
