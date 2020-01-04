@@ -19,7 +19,9 @@ ChrisIdakwo\Auth\Providers\CustomAuthServiceProvider::class
 #### Config
 Publish config file only when you need to use a custom password validator
 
-``php artisan vendor:publish ChrisIdakwo\Auth\Providers\CustomAuthServiceProvider --tag=config``
+```bash
+php artisan vendor:publish --tag=custom-auth
+```
 
 #### User Model
 Update the ``User`` model to use the ``ChrisIdakwo\Auth\Traits\CustomAuthUser`` trait.
