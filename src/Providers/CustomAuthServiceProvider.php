@@ -15,10 +15,14 @@ class CustomAuthServiceProvider extends ServiceProvider {
 	public function boot(): void {
 		$path = dirname(__DIR__, 2) . "/config/custom-auth.php";
 
-		$this->publishes([$path => config_path('custom-auth.php')], "config");
-
-		$this->mergeConfigFrom($path, "custom-auth");
+		$this->publishes([$path => config_path('custom-auth.php')], "custom-auth");
 
 		$this->bootCustomAuthProvider();
+	}
+
+	public function register() {
+		$path = dirname(__DIR__, 2) . "/config/custom-auth.php";
+
+		$this->mergeConfigFrom($path, "custom-auth");
 	}
 }
