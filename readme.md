@@ -87,11 +87,3 @@ if (Auth::attempt($data)) {
 }
 ```
 
-TODO
-------------
-- Write Test Cases
-
-Note
-------------
-Still in active development. But can be used as is.
-
