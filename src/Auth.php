@@ -1,35 +1,36 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ChrisIdakwo\Auth;
 
 use InvalidArgumentException;
 
-class Auth {
+class Auth
+{
 
 	/**
 	 * Identifier name.
-	 *
-	 * @var string
 	 */
-	public static $identifier = 'identifier';
+	public static string $identifier = 'identifier';
 
 	/**
 	 * Get identifier name.
 	 *
 	 * @return string
 	 */
-	public static function getIdentifierName(): string {
+	public static function getIdentifierName(): string
+    {
 		return static::$identifier;
 	}
 
 	/**
 	 * Set identifier name.
-	 *
-	 * @param string $identifier
-	 *
+     *
 	 * @throws InvalidArgumentException
 	 */
-	public static function setIdentifierName(string $identifier): void {
+	public static function setIdentifierName(string $identifier): void
+    {
 		if (empty($identifier)) {
 			throw new InvalidArgumentException("Identifier shouldn't be empty.");
 		}

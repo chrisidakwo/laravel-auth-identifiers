@@ -1,18 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ChrisIdakwo\Auth\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class CustomAuthServiceProvider extends ServiceProvider {
+class CustomAuthServiceProvider extends ServiceProvider
+{
 	use BootCustomAuthProvider;
 
 	/**
 	 * Boot the service provider
-	 *
-	 * @return void
 	 */
-	public function boot(): void {
+	public function boot(): void
+    {
 		$path = dirname(__DIR__, 2) . "/config/custom-auth.php";
 
 		$this->publishes([$path => config_path('custom-auth.php')], "custom-auth");
@@ -20,7 +22,8 @@ class CustomAuthServiceProvider extends ServiceProvider {
 		$this->bootCustomAuthProvider();
 	}
 
-	public function register() {
+	public function register(): void
+    {
 		$path = dirname(__DIR__, 2) . "/config/custom-auth.php";
 
 		$this->mergeConfigFrom($path, "custom-auth");

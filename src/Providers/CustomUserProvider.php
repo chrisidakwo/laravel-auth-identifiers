@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ChrisIdakwo\Auth\Providers;
 
 use Illuminate\Auth\EloquentUserProvider;
@@ -10,8 +12,10 @@ use ChrisIdakwo\Auth\Auth;
 use ChrisIdakwo\Auth\Exceptions\CustomAuthException;
 use ChrisIdakwo\Auth\Interfaces\ICustomAuthValidate;
 
-class CustomUserProvider extends EloquentUserProvider {
-	public function retrieveByCredentials(array $credentials) {
+class CustomUserProvider extends EloquentUserProvider
+{
+	public function retrieveByCredentials(array $credentials): Authenticatable|null
+    {
 		$name = Auth::getIdentifierName();
 
 		// Should in case the key from request that is used to hold the login credentials
@@ -43,12 +47,12 @@ class CustomUserProvider extends EloquentUserProvider {
 	/**
 	 * Validate a user against the given credentials.
 	 *
-	 * @param Authenticatable $user
-	 * @param array $credentials
-	 * @return bool
+	 * @param array<string, mixed> $credentials
+     *
 	 * @throws CustomAuthException
 	 */
-	public function validateCredentials(Authenticatable $user, array $credentials): bool {
+	public function validateCredentials(Authenticatable $user, array $credentials): bool
+    {
 		$customValidator = Config::get("custom-auth.password_validator");
 
 		if ($customValidator !== null) {
