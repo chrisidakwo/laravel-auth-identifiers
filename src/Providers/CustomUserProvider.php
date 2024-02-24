@@ -15,7 +15,7 @@ use ChrisIdakwo\Auth\Interfaces\ICustomAuthValidate;
 class CustomUserProvider extends EloquentUserProvider
 {
 	public function retrieveByCredentials(array $credentials): Authenticatable|null
-    {
+	{
 		$name = Auth::getIdentifierName();
 
 		// Should in case the key from request that is used to hold the login credentials
@@ -52,7 +52,7 @@ class CustomUserProvider extends EloquentUserProvider
 	 * @throws CustomAuthException
 	 */
 	public function validateCredentials(Authenticatable $user, array $credentials): bool
-    {
+	{
 		$customValidator = Config::get("custom-auth.password_validator");
 
 		if ($customValidator !== null) {

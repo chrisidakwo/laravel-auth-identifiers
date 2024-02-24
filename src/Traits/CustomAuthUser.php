@@ -12,7 +12,7 @@ trait CustomAuthUser
 	 * Find by identifiers scope
 	 */
 	public function scopeFindByIdentifiers(Builder $builder, int|string $username): Builder
-    {
+	{
 		$identifiers = $this->getAuthIdentifiersName();
 		$builder->where(static function ($query) use ($identifiers, $username) {
 			foreach ($identifiers as $key) {

@@ -8,7 +8,6 @@ use InvalidArgumentException;
 
 class Auth
 {
-
 	/**
 	 * Identifier name.
 	 */
@@ -20,7 +19,7 @@ class Auth
 	 * @return string
 	 */
 	public static function getIdentifierName(): string
-    {
+	{
 		return static::$identifier;
 	}
 
@@ -30,7 +29,7 @@ class Auth
 	 * @throws InvalidArgumentException
 	 */
 	public static function setIdentifierName(string $identifier): void
-    {
+	{
 		if (empty($identifier)) {
 			throw new InvalidArgumentException("Identifier shouldn't be empty.");
 		}

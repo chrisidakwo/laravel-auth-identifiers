@@ -6,7 +6,8 @@ namespace ChrisIdakwo\Auth\Interfaces;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 
-interface ICustomAuthValidate {
+interface ICustomAuthValidate
+{
 
 	/**
 	 * Validate a user's password against password from request data

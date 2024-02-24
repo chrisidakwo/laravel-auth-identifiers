@@ -14,7 +14,7 @@ class CustomAuthServiceProvider extends ServiceProvider
 	 * Boot the service provider
 	 */
 	public function boot(): void
-    {
+	{
 		$path = dirname(__DIR__, 2) . "/config/custom-auth.php";
 
 		$this->publishes([$path => config_path('custom-auth.php')], "custom-auth");
@@ -23,7 +23,7 @@ class CustomAuthServiceProvider extends ServiceProvider
 	}
 
 	public function register(): void
-    {
+	{
 		$path = dirname(__DIR__, 2) . "/config/custom-auth.php";
 
 		$this->mergeConfigFrom($path, "custom-auth");

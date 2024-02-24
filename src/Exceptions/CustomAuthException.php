@@ -12,7 +12,7 @@ class CustomAuthException extends Exception
 	 * @return CustomAuthException
 	 */
 	public static function invalidValidator(): self
-    {
-		return new self("The `password_validator` configuration can ony be null, a callable, or an class instance of ICustomAuthValidator");
+	{
+		return new self("The `password_validator` configuration can ony be null, a callable, or a class instance of ICustomAuthValidator");
 	}
 }
